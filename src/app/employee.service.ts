@@ -11,7 +11,8 @@ export class EmployeeService {
 
   private errorMsg: string = "";
 
-  private baseUrl = 'http://localhost:8080/emp-api/v1/employees';
+  private baseUrl = 'http://localhost:8091/emp-api/v1/employees';
+  //private baseUrl = 'http://192.168.0.165:5000/emp-api/v1/employees'; //Kubernetes cluster url on Macbook CentOs VMware
 
   constructor(private httpclient: HttpClient) { }
 
