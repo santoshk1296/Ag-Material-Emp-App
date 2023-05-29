@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emplyee-mgmt-frontend-Deploy
+  namespace: springbootapp-dev
+  labels:
+    app: emplyeemgmtfrontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: emplyeemgmtfrontend
+  template:
+    metadata:
+      labels:
+        app: emplyeemgmtfrontend 
+    spec:
+      containers:
+      - name: emplyeemgmtfrontend
+        image: santoshk1296.azurecr.io/santoshk1296/emplyeemgmtfrontend:latest
+        env:
+            - name: TZ
+              value: Asia/Kolkata
+        ports:
+        - containerPort: 3003
+            
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: emplyee-mgmt-frontend-service
+  namespace: springbootapp-dev
+spec:
+  selector:
+    app: emplyeemgmtfrontend 
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 5001
+    targetPort: 3003

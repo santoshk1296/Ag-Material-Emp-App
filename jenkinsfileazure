@@ -1,0 +1,69 @@
+pipeline {
+
+  environment {
+    dockerimagename = "santoshk1296/emplyeemgmtfrontend"
+    dockerImage = ""
+    dockerImageTag = "${env.BUILD_NUMBER}"
+  }
+
+  agent any
+
+  stages {
+
+    stage('Checkout Source') {
+      steps {
+        git branch: 'main', credentialsId: 'githubcred', url: 'git@github.com:santoshk1296/Ag-Material-Emp-App.git'
+      }
+    }
+
+	stage('NPM Install') {
+		steps {
+		 	sh 'npm install'
+    	}
+   }
+
+   stage('NPM Build') {
+		steps {
+		 	sh 'npm run build --prod'
+    	}
+   }
+  
+    stage('Build image') {
+      steps{
+        script {
+          dockerImage = docker.build dockerimagename + ":$BUILD_NUMBER"
+        }
+      }
+    }
+
+    stage('Pushing Image') {
+      environment {
+               registryCredential = 'azureRepo'
+           }
+      steps{
+        script {
+          docker.withRegistry( 'https://santoshk1296.azurecr.io', registryCredential ) {
+            dockerImage.push("latest")
+          }
+        }
+      }
+    }
+    
+    stage('Cleaning up') {
+        steps{
+            sh 'docker rmi --force $(docker images --quiet --filter=reference="$dockerimagename")'
+       }
+    }
+    
+    stage('Deploying App to Kubernetes') {
+        steps {
+          withKubeConfig([credentialsId: 'AzureKube', serverUrl: 'https://devakscluster-dns-1vklsfvt.hcp.eastus.azmk8s.io:443']) {
+                sh 'kubectl apply -f deploymentservice-azure.yaml'
+            }
+        
+        }
+    }
+
+  }
+
+}
