@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: emplyee-mgmt-frontend-Deploy
+  name: emplyee-mgmt-frontend-deploy
   namespace: springbootapp-dev
   labels:
     app: emplyeemgmtfrontend
