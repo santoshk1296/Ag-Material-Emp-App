@@ -16,18 +16,6 @@ pipeline {
       }
     }
 
-	stage('NPM Install') {
-		steps {
-		 	sh 'npm install'
-    	}
-   }
-
-   stage('NPM Build') {
-		steps {
-		 	sh 'npm run build --prod'
-    	}
-   }
-  
     stage('Build image') {
       steps{
         script {
