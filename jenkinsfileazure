@@ -12,7 +12,7 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git branch: 'main', credentialsId: 'githubcred', url: 'git@github.com:santoshk1296/Ag-Material-Emp-App.git'
+        git branch: 'master', credentialsId: 'githubcred', url: 'git@github.com:santoshk1296/Ag-Material-Emp-App.git'
       }
     }
 

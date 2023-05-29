@@ -1,2 +1,2 @@
 FROM nginx:alpine
-COPY /Ag-Material-Emp-App /opt/app/nginx/empmgmt-frontned
+COPY /EmpMgmtFrontEnd /opt/app/nginx/empmgmt-frontned
