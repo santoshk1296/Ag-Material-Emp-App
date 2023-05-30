@@ -22,7 +22,7 @@ spec:
             - name: TZ
               value: Asia/Kolkata
         ports:
-        - containerPort: 3003
+        - containerPort: 4200
             
 ---
 
@@ -38,4 +38,4 @@ spec:
   ports:
   - protocol: TCP
     port: 5001
-    targetPort: 3003
+    targetPort: 4200
