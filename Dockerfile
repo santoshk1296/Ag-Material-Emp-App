@@ -9,3 +9,4 @@ RUN npm run build --prod
 # Stage 2
 FROM nginx:1.17.1-alpine
 COPY --from=build-step /app/dist/ag-material-emp-app /usr/share/nginx/html
+EXPOSE 4200
