@@ -8,5 +8,5 @@ COPY . /app
 RUN npm run build --prod
 # Stage 2
 FROM nginx:latest
-COPY --from=build-step /app/dist/ag-material-emp-app /usr/share/nginx/html
+COPY --from=build /app/dist/ag-material-emp-app /usr/share/nginx/html
 EXPOSE 4200
