@@ -13,7 +13,7 @@ export class EmployeeService {
 
   //private baseUrl = 'http://localhost:8091/emp-api/v1/employees';
   //private baseUrl = 'http://192.168.0.165:5000/emp-api/v1/employees'; //Kubernetes cluster url on Macbook CentOs VMware
-  private baseUrl ='http://20.124.43.199:5000/emp-api/v1/employees'; //Kubernetes cluster url on Macbook CentOs VMware
+  private baseUrl ='http://20.237.100.142:5000/emp-api/v1/employees'; //Kubernetes cluster url on Macbook CentOs VMware 
 
   constructor(private httpclient: HttpClient) { }
 
