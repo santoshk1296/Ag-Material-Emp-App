@@ -29,6 +29,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  annotations:
+   service.beta.kubernetes.io/azure-dns-lebel-name: sanempmgmt
   name: emplyee-mgmt-frontend-service
   namespace: springbootapp-dev
 spec:
