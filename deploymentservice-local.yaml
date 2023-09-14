@@ -1,26 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: emplyee-mgmt-frontend-deploy
+  name: emplyee-mgmt-frontend
   namespace: springbootapp-dev
   labels:
-    app: emplyeemgmtfrontend
+    app: emplyee-mgmt-frontend
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: emplyeemgmtfrontend
+      app: emplyee-mgmt-frontend
   template:
     metadata:
       labels:
-        app: emplyeemgmtfrontend 
+        app: emplyee-mgmt-frontend 
     spec:
       containers:
-      - name: emplyeemgmtfrontend
+      - name: emplyee-mgmt-frontend
         image: santoshk1296/emplyeemgmtfrontend:latest
         env:
-            - name: TZ
-              value: Asia/Kolkata
+          - name: EMPLOYEE_MGMT_API_SERVICE_HOST
+            value: http://emplyee-mgmt-api
+          - name: TZ
+            value: Asia/Kolkata
         ports:
         - containerPort: 4200
             
@@ -29,11 +31,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: emplyee-mgmt-frontend-service
+  name: emplyee-mgmt-frontend
   namespace: springbootapp-dev
 spec:
   selector:
-    app: emplyeemgmtfrontend 
+    app: emplyee-mgmt-frontend 
   type: LoadBalancer
   ports:
   - protocol: TCP
