@@ -3,9 +3,10 @@ FROM node:latest as build
 RUN mkdir -p /app
 WORKDIR /app
 COPY package*.json /app
+COPY . /app
 RUN npm install
 RUN npm run build --prod
-COPY . /app
+
 # Stage 2
 FROM nginx:latest
 COPY --from=build /app/dist/ag-material-emp-app /usr/share/nginx/html
