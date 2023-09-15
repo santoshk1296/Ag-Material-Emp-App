@@ -12,7 +12,7 @@ export class EmployeeService {
   private errorMsg: string = "";
 
   //private baseUrl = 'http://localhost:8091/emp-api/v1/employees';
-  private baseUrl = 'http://emplyee-mgmt-api:5000/emp-api/v1/employees'; //Kubernetes cluster url on Macbook CentOs VMware
+  private baseUrl = `http://${process.env.EMPLOYEE_MGMT_API_HOST}/emp-api/v1/employees`; //Kubernetes cluster url on Macbook CentOs VMware
   //private baseUrl ='http://empmgmtbackend.centralindia.cloudapp.azure.com:8091/emp-api/v1/employees'; //Kubernetes cluster url on Azure AKS
   //Url to launch : http://192.168.0.166:5001/
   
