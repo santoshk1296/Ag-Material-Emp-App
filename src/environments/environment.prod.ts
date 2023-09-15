@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl: 'http://emplyee-mgmt-api.springbootapp-dev'
 };

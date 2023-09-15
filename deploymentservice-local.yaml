@@ -19,8 +19,6 @@ spec:
       - name: emplyee-mgmt-frontend
         image: santoshk1296/emplyeemgmtfrontend:latest
         env:
-          - name: EMPLOYEE_MGMT_API_HOST
-            value: "emplyee-mgmt-api.springbootapp-dev:5000"
           - name: TZ
             value: Asia/Kolkata
         ports:
